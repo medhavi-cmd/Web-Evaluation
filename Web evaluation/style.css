@@ -653,6 +653,22 @@ form input {
     color: grey;
 }
 
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.faq-answer p {
+    padding: 20px 25px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
 .faq-item.active .faq-arrow {
     transform: rotate(180deg);
 }

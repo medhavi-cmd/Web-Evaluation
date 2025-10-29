@@ -1,0 +1,29 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "question": "How do I sign up?",
+      "answer": "Signing up for Cryptin is easy! Click on the \"SIGN UP\" button in the navigation menu, fill out the registration form with your details, verify your email address, and you're ready to start trading cryptocurrencies."
+    },
+    {
+      "id": 2,
+      "question": "Where is Cryptin available?",
+      "answer": "Cryptin is available globally in most countries. However, availability may vary based on local regulations. Please check our service availability in your region during the sign-up process."
+    },
+    {
+      "id": 3,
+      "question": "How much does Cryptin cost?",
+      "answer": "Cryptin offers competitive trading fees starting at 0.1% per transaction. There are no sign-up fees, and you only pay when you trade. Premium features and lower fees are available for high-volume traders."
+    },
+    {
+      "id": 4,
+      "question": "What devices work with Cryptin?",
+      "answer": "Cryptin works on all modern devices including desktop computers, laptops, tablets, and smartphones. Our platform is fully responsive and works on Windows, Mac, iOS, and Android devices through any modern web browser."
+    },
+    {
+      "id": 5,
+      "question": "Do I need special software? Is there an app?",
+      "answer": "No special software is required! Cryptin runs entirely in your web browser. While we currently don't have a dedicated mobile app, our website is fully optimized for mobile browsers, providing a seamless trading experience on any device."
+    }
+  ]
+}
