@@ -1,0 +1,96 @@
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .dash-h1 {
+        font-size: 2rem;
+    }
+    
+    .financial-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container, .exchange-card, .balance-card, .stat-card {
+        padding: 20px;
+    }
+}
+
+
+
+* Responsive Design */
+@media (max-width: 768px) {
+    .faq-title {
+        font-size: 2.5rem;
+    }
+
+    .faq-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+
+    .email-input {
+        width: 100%;
+    }
+
+    .company-info h2 {
+        font-size: 2rem;
+    }
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+    /* .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    } */
+
+    .navbar {
+        padding: 15px 20px;
+        border-radius: 20px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .pattern-grid {
+        background-size: 80px 80px;
+        background-position: 0 0, 40px 40px;
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+}

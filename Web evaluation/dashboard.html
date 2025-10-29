@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dash-body">
+    <div class="container">
+        <h1 class="dash-h1">Dashboard</h1>
+        
+        <div class="dashboard">
+            <div class="chart-container glow">
+                <img src="img/graph.png" class="chart-canvas">
+            </div>
+
+            <div class="sidebar">
+                <div class="exchange-card">
+                    <div class="exchange-title">Exchange</div>
+                    <div class="crypto-pair">
+                        <div class="crypto-info">
+                            <span class="crypto-symbol">NTC</span>
+                            <span class="arrow">➔</span>
+                            <span class="crypto-price">$102.89 USD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="number" class="input-field" placeholder="10" value="10">
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="number" class="input-field" placeholder="1028.9" value="1028.9">
+                    </div>
+                    
+                    <button class="buy-button">BUY</button>
+                </div>
+
+                <div class="balance-card">
+                    <div class="balance-title">Balance</div>
+                    <div class="balance-amount">Available Balance: $15,420.32</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="financial-stats">
+            <div class="stat-card">
+                <div class="stat-title">Income</div>
+                <div class="stat-amount income">$21,548.44</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-title">Expenses</div>
+                <div class="stat-amount expenses">$8,769.04</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

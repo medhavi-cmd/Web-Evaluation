@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img height="50px" width="50px" src="img/logo.png" alt="logo">
+      <span class="logo-text">Cryptin.</span>
+    </div>
+    <nav>
+      <a href="#">HOME</a>
+      <a href="index.html">BUY</a>
+      <a href="index.html">SELL</a>
+      <a href="signup.html">SIGN UP</a>
+    </nav>
+  </header>
+
+  <!-- ORDER BOX -->
+  <main>
+    <div class="order-box">
+      <h2>Order Application</h2>
+      <p class="subtitle">Submit Your Purchase Order And Our Counterparty Will Reply Shortly.</p>
+
+      <div class="toggle-buttons">
+        <button>I WANT TO BUY</button>
+        <button class="active">I WANT TO SELL</button>
+      </div>
+
+      <form>
+        <label>Select Counterparty</label>
+        <select>
+          <option>Luis Maria Ruiz</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" value="1">
+
+        <label>Asset</label>
+        <select>
+          <option>BTC</option>
+        </select>
+
+        <label>Amount</label>
+        <input type="text" value="29,000.00">
+
+        <label>Asset</label>
+        <select>
+          <option>USDC</option>
+        </select>
+
+        <label>This order expires in</label>
+        <input type="date" value="2022-06-10">
+
+        <button type="submit" class="generate">GENERATE ORDER</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <img height="50px" width="50px" src="img/logo.png" alt="logo">
+      <div>
+        <span class="logo-text">Cryptin.</span>
+        <p class="desc">The future of cryptocurrency trading.<br>Secure, fast, and reliable.</p>
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <div class="social-icons">
+        <div class="icon"><img src="https://www.shutterstock.com/shutterstock/videos/1063781164/thumb/5.jpg?ip=x480" alt="twitter-logo"></div>
+        
+        <div class="icon"><img src="https://i.pinimg.com/564x/6b/ab/30/6bab3017350ca04c6fa05569672bd31e.jpg" alt="linkedin logo"></div>
+      </div>
+      <input type="email" placeholder="Enter your email address">
+      <a href="signup.html" class="signIn">Sign in</a>
+    </div>
+  </footer>
+
+</body>
+</html>
