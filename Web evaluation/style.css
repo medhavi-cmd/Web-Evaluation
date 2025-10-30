@@ -399,6 +399,55 @@ form input {
     gap: 20px;
 }
 
+/* JSON output card styles */
+.json-output-card{
+    background: #111;
+    border: 1px solid #2f2f2f;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 20px;
+    color: #e6eef8;
+}
+
+.json-output-card .json-title{
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #cfe7ff;
+}
+
+.json-actions{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.small-button{
+    padding: 8px 12px;
+    background: #3b82f6;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.small-button:hover{
+    opacity: 0.95;
+}
+
+.json-pre{
+    background: #060606;
+    border: 1px solid #222;
+    padding: 12px;
+    border-radius: 6px;
+    color: #dbeafe;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.95rem;
+    max-height: 220px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
 .legend-item {
     display: flex;
     align-items: center;

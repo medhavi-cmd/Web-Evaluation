@@ -22,16 +22,16 @@
                         <div class="crypto-info">
                             <span class="crypto-symbol">NTC</span>
                             <span class="arrow">➔</span>
-                            <span class="crypto-price">$102.89 USD</span>
+                            <span class="crypto-price" id="crypto-price">$102.89 USD</span>
                         </div>
                     </div>
                     
                     <div class="input-group">
-                        <input type="number" class="input-field" placeholder="10" value="10">
+                        <input type="number" id="input-crypto" class="input-field" placeholder="Enter amount in NTC" value="10">
                     </div>
                     
                     <div class="input-group">
-                        <input type="number" class="input-field" placeholder="1028.9" value="1028.9">
+                        <input type="number" id="input-usd" class="input-field" placeholder="Converted USD" value="1028.9" readonly>
                     </div>
                     
                     <button class="buy-button">BUY</button>
@@ -47,15 +47,54 @@
         <div class="financial-stats">
             <div class="stat-card">
                 <div class="stat-title">Income</div>
-                <div class="stat-amount income">$21,548.44</div>
+                <div id="income" class="stat-amount income">$0.00</div>
             </div>
             
             <div class="stat-card">
                 <div class="stat-title">Expenses</div>
-                <div class="stat-amount expenses">$8,769.04</div>
+                <div id="expenses" class="stat-amount expenses">$0.00</div>
             </div>
         </div>
     </div>
 
+    <!-- ===== Internal JavaScript ===== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fetch and Display Income & Expenses 
+            fetch("financial.json")
+                .then(response => {
+                    if (!response.ok) throw new Error("Failed to load financial data");
+                    return response.json();
+                })
+                .then(data => {
+                    const incomeElement = document.getElementById("income");
+                    const expensesElement = document.getElementById("expenses");
+
+                    incomeElement.textContent = `$${data.income.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                    expensesElement.textContent = `$${data.expenses.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                })
+                .catch(error => console.error("Error fetching financial data:", error));
+
+            // Conversion  (NTC ➔ USD) 
+            const cryptoPriceElement = document.getElementById("crypto-price");
+            const inputCrypto = document.getElementById("input-crypto");
+            const inputUSD = document.getElementById("input-usd");
+
+            // Extract numeric value from "$102.89 USD"
+            const priceText = cryptoPriceElement.textContent.trim();
+            const priceValue = parseFloat(priceText.replace(/[^0-9.]/g, "")) || 0;
+
+            // Function to convert crypto amount to USD
+            const convertCryptoToUSD = () => {
+                const cryptoAmount = parseFloat(inputCrypto.value) || 0;
+                const converted = cryptoAmount * priceValue;
+                inputUSD.value = converted.toFixed(2);
+            };
+
+            // Trigger conversion when user types in the first input
+            inputCrypto.addEventListener("input", convertCryptoToUSD);
+
+        });
+    </script>
 </body>
 </html>
