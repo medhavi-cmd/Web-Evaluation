@@ -61,7 +61,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Fetch and Display Income & Expenses 
-            fetch("financial.json")
+            fetch("financials.json")
                 .then(response => {
                     if (!response.ok) throw new Error("Failed to load financial data");
                     return response.json();
