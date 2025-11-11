@@ -31,68 +31,8 @@
             <!-- FAQ items will be loaded here dynamically from JSON -->
         </div>
     </div>
-
-    <script>
-        // Fetch FAQ data from JSON file
-        async function loadFAQs() {
-            try {
-                const response = await fetch('faq-data.json');
-                const data = await response.json();
-                const faqContainer = document.getElementById('faqContainer');
-                
-                // Generate FAQ items from JSON data
-                data.faqs.forEach(faq => {
-                    const faqItem = document.createElement('div');
-                    faqItem.className = 'faq-item';
-                    
-                    faqItem.innerHTML = `
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>${faq.question}</span>
-                            <span class="faq-arrow">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>${faq.answer}</p>
-                        </div>
-                    `;
-                    
-                    faqContainer.appendChild(faqItem);
-                });
-            } catch (error) {
-                console.error('Error loading FAQ data:', error);
-                document.getElementById('faqContainer').innerHTML = '<p style="color: white;">Unable to load FAQs. Please try again later.</p>';
-            }
-        }
-
-        // Toggle FAQ function
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const arrow = element.querySelector('.faq-arrow');
-            
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-answer').style.maxHeight = null;
-                    item.querySelector('.faq-arrow').style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            // Toggle current FAQ item
-            faqItem.classList.toggle('active');
-            
-            if (faqItem.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                answer.style.maxHeight = null;
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Load FAQs when page loads
-        document.addEventListener('DOMContentLoaded', loadFAQs);
-    </script>
+    <script src="js/common.js"></script>
+    <script src="js/faq.js"></script>
 
       <!-- FOOTER -->
   <footer class="footer">
