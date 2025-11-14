@@ -1,55 +1,95 @@
 document.addEventListener('DOMContentLoaded', function () {
-  async function loadFAQs() {
-    try {
-      const response = await fetch('faq-data.json');
-      const data = await response.json();
-      const faqContainer = document.getElementById('faqContainer');
-      data.faqs.forEach(function (faq) {
-        const faqItem = document.createElement('div');
-        faqItem.className = 'faq-item';
-        faqItem.innerHTML =
-          '<div class="faq-question">' +
-          '<span>' + faq.question + '</span>' +
-          '<span class="faq-arrow">▼</span>' +
-          '</div>' +
-          '<div class="faq-answer">' +
-          '<p>' + faq.answer + '</p>' +
-          '</div>';
-        faqContainer.appendChild(faqItem);
-      });
-      bindFaqToggles();
-    } catch (error) {
-      console.error('Error loading FAQ data:', error);
-      document.getElementById('faqContainer').innerHTML = '<p style="color: white;">Unable to load FAQs. Please try again later.</p>';
+
+class FAQItem {
+    constructor(id, question, answer) {
+      this.id = id;
+      this.question = question;
+      this.answer = answer;
+      this.expanded = false;
     }
+
+  render() {
+    return `
+      <div class="faq-item" data-id="${this.id}">
+        <div class="faq-question">
+          <span>${this.question}</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+
+        <div class="faq-answer">
+          <p>${this.answer}</p>
+        </div>
+      </div>
+    `;
+  }
   }
 
-  function bindFaqToggles() {
-    var questions = document.querySelectorAll('.faq-question');
-    questions.forEach(function (q) {
-      q.addEventListener('click', function () {
-        var faqItem = q.parentElement;
-        var answer = faqItem.querySelector('.faq-answer');
-        var arrow = q.querySelector('.faq-arrow');
-        document.querySelectorAll('.faq-item').forEach(function (item) {
-          if (item !== faqItem) {
-            item.classList.remove('active');
-            item.querySelector('.faq-answer').style.maxHeight = null;
-            item.querySelector('.faq-arrow').style.transform = 'rotate(0deg)';
-          }
-        });
-        faqItem.classList.toggle('active');
-        if (faqItem.classList.contains('active')) {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          arrow.style.transform = 'rotate(180deg)';
-        } else {
-          answer.style.maxHeight = null;
-          arrow.style.transform = 'rotate(0deg)';
-        }
-      });
+
+
+  let faqObjects = [];
+
+  async function loadFAQs() {
+    const res = await fetch("faq-data.json");
+    const data = await res.json();
+    faqObjects = data.faqs.map(f => new FAQItem(f.id, f.question, f.answer));
+
+    renderFAQ();
+  }
+
+
+
+  function renderFAQ() {
+    const container = document.getElementById("faqContainer");
+    container.innerHTML = faqObjects.map(f => f.render()).join("");
+
+    applyAnimations();
+  }
+
+
+
+  document.getElementById("faqContainer").addEventListener("click", function (e) {
+
+    const questionDiv = e.target.closest(".faq-question");
+    if (!questionDiv) return;
+
+    const faqItemDiv = questionDiv.parentElement;
+    const id = faqItemDiv.dataset.id;
+
+    const faqObj = faqObjects.find(f => f.id == id);
+
+    // collapse all others
+    faqObjects.forEach(obj => {
+      if (obj.id != id) obj.expanded = false;
+    });
+
+    faqObj.expanded = !faqObj.expanded;
+
+    renderFAQ();
+  });
+
+
+
+  function applyAnimations() {
+    document.querySelectorAll(".faq-item").forEach(item => {
+      const id = item.dataset.id;
+      const obj = faqObjects.find(f => f.id == id);
+      const ans = item.querySelector(".faq-answer");
+      const arrow = item.querySelector(".faq-arrow");
+
+      if (obj.expanded) {
+        item.classList.add("active");
+        ans.style.maxHeight = ans.scrollHeight + "px";
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        item.classList.remove("active");
+        ans.style.maxHeight = null;
+        arrow.style.transform = "rotate(0deg)";
+      }
     });
   }
 
-  loadFAQs();
-});
 
+
+  loadFAQs();
+
+});
