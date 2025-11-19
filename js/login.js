@@ -28,7 +28,38 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!email.value || !password.value) {
       e.preventDefault();
       alert('Please enter both email and password.');
+      return;
     }
+
+    e.preventDefault(); // Prevent default form submission
+
+    const loginData = {
+      email: email.value,
+      password: password.value
+    };
+
+    fetch('http://localhost:5000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(loginData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.token) {
+        localStorage.setItem('token', data.token); // Store JWT
+        localStorage.setItem('user', JSON.stringify(data.user));
+        alert('Login successful!');
+        window.location.href = '/dashboard';
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred during login');
+    });
   });
 });
 

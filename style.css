@@ -34,6 +34,7 @@ body {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1000;
   /* backdrop-filter: blur(10px); */
   
 }
@@ -363,6 +364,7 @@ form input {
 .dash-h1 {
     text-align: center;
     font-size: 3rem;
+    margin-top: 150px;
     margin-bottom: 40px;
     color: #ffffff;
 }

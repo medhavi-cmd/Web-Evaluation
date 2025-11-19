@@ -1,14 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('/financials.json')
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/login';
+    return;
+  }
+
+  fetch(`http://localhost:5000/api/dashboard`, {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
     .then(function (response) {
+      if (response.status === 401) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+        throw new Error('Unauthorized');
+      }
       if (!response.ok) throw new Error('Failed to load financial data');
       return response.json();
     })
     .then(function (data) {
       var incomeElement = document.getElementById('income');
       var expensesElement = document.getElementById('expenses');
-      incomeElement.textContent = '$' + Number(data.income).toLocaleString('en-US', { minimumFractionDigits: 2 });
-      expensesElement.textContent = '$' + Number(data.expenses).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      // Assuming you might want to show balance too, but sticking to existing UI elements for now
+      if(incomeElement) incomeElement.textContent = '$' + Number(data.income).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      if(expensesElement) expensesElement.textContent = '$' + Number(data.expenses).toLocaleString('en-US', { minimumFractionDigits: 2 });
     })
     .catch(function (error) { console.error('Error fetching financial data:', error); });
 

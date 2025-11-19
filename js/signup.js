@@ -34,7 +34,38 @@ document.addEventListener('DOMContentLoaded', function () {
     if (terms && !terms.checked) {
       e.preventDefault();
       alert('Please agree to the terms & policies.');
+      return;
     }
+
+    e.preventDefault(); // Prevent default form submission
+
+    const userData = {
+      name: name.value,
+      email: email.value,
+      password: document.getElementById('password').value
+    };
+
+    fetch('http://localhost:5000/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Signup successful! Please login.');
+        window.location.href = '/login';
+      } else {
+        return response.json().then(data => {
+          alert(data.message || 'Signup failed');
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred during signup');
+    });
   });
 });
 

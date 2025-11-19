@@ -39,6 +39,10 @@ app.get('/sell', (req, res) => {
     res.render('sell');
 });
 
+app.get('/manage', (req, res) => {
+    res.render('manage');
+});
+
 app.get('/login', (req, res) => {
     res.render('login');
 });

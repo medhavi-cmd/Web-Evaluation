@@ -29,11 +29,15 @@ class FAQItem {
   let faqObjects = [];
 
   async function loadFAQs() {
-    const res = await fetch("/faq-data.json");
-    const data = await res.json();
-    faqObjects = data.faqs.map(f => new FAQItem(f.id, f.question, f.answer));
-
-    renderFAQ();
+    try {
+      const res = await fetch("http://localhost:5000/api/faqs");
+      const data = await res.json();
+      // Backend returns { faqs: [...] }
+      faqObjects = data.faqs.map(f => new FAQItem(f._id, f.question, f.answer));
+      renderFAQ();
+    } catch (error) {
+      console.error("Error loading FAQs:", error);
+    }
   }
 
 

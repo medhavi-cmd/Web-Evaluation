@@ -28,5 +28,44 @@ document.addEventListener('DOMContentLoaded', function () {
   if (quantityInput) quantityInput.addEventListener('input', recalc);
   if (assetSelect) assetSelect.addEventListener('change', recalc);
   recalc();
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login first');
+      window.location.href = '/login';
+      return;
+    }
+
+    const asset = (assetSelect.value || 'BTC').toUpperCase();
+    const quantity = parseFloat(quantityInput.value) || 0;
+    const price = priceByAsset[asset] || 0;
+
+    fetch('http://localhost:5000/api/buy', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ asset, quantity, price })
+    })
+    .then(res => {
+      if (res.status === 401) {
+        window.location.href = '/login';
+        throw new Error('Unauthorized');
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (data.message === 'Purchase successful') {
+        alert('Purchase successful!');
+        window.location.href = '/dashboard';
+      } else {
+        alert(data.message || 'Purchase failed');
+      }
+    })
+    .catch(err => console.error(err));
+  });
 });
 
