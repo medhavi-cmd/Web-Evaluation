@@ -15,7 +15,9 @@ app.set("views", path.join(__dirname, "views"));
 // 2. Serve Static Files
 // Everything in /public becomes available in browser
 // -----------------------------
-app.use(express.static(path.join(__dirname, "public")));
+// Serve static files from the project root so existing assets (style.css, img/, js/, financials.json)
+// remain available without moving them.
+app.use(express.static(path.join(__dirname)));
 
 
 // -----------------------------
@@ -41,6 +43,22 @@ app.get("/signup", (req, res) => {
     res.render("signup");  // views/signup.ejs
 });
 
+// Dashboard route (render EJS view)
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+});
+
+// Sell and Login routes
+app.get('/sell', (req, res) => {
+    res.render('sell');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+// Keep an alias for the old static filename to redirect to the new route
+app.get('/about_us.html', (req, res) => res.redirect('/about'));
 // More pages later (like CRUD page)
 
 

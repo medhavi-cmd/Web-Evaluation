@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - Cryptin</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="dash-body">
+  <%- include('partials/header') %>
+
+  <div class="container">
+      <h1 class="dash-h1">Dashboard</h1>
+      
+      <div class="dashboard">
+          <div class="chart-container glow">
+              <img src="/img/graph.png" class="chart-canvas">
+          </div>
+
+          <div class="sidebar">
+              <div class="exchange-card">
+                  <div class="exchange-title">Exchange</div>
+                  <div class="crypto-pair">
+                      <div class="crypto-info">
+                          <span class="crypto-symbol">NTC</span>
+                          <span class="arrow">➔</span>
+                          <span class="crypto-price" id="crypto-price">$102.89 USD</span>
+                      </div>
+                  </div>
+                  
+                  <div class="input-group">
+                      <input type="number" id="input-crypto" class="input-field" placeholder="Enter amount in NTC" value="10">
+                  </div>
+                  
+                  <div class="input-group">
+                      <input type="number" id="input-usd" class="input-field" placeholder="Converted USD" value="1028.9" readonly>
+                  </div>
+                  
+                  <button class="buy-button">BUY</button>
+              </div>
+
+              <div class="balance-card">
+                  <div class="balance-title">Balance</div>
+                  <div class="balance-amount">Available Balance: $15,420.32</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="financial-stats">
+          <div class="stat-card">
+              <div class="stat-title">Income</div>
+              <div id="income" class="stat-amount income">$0.00</div>
+          </div>
+          
+          <div class="stat-card">
+              <div class="stat-title">Expenses</div>
+              <div id="expenses" class="stat-amount expenses">$0.00</div>
+          </div>
+      </div>
+
+      <!-- JSON output area -->
+      <div class="json-output-card">
+          <div class="json-title">Financials (JSON)</div>
+          <div class="json-actions">
+              <button id="show-json" class="small-button">Show JSON</button>
+              <button id="copy-json" class="small-button">Copy JSON</button>
+          </div>
+          <pre id="json-output" class="json-pre">{
+  "income": 0,
+  "expenses": 0
+}</pre>
+      </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buy - Cryptin</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="order-box">
+      <h2>Order Application</h2>
+      <p class="subtitle">Submit Your Purchase Order And Our Counterparty Will Reply Shortly.</p>
+
+      <div class="toggle-buttons">
+        <button class="active">I WANT TO BUY</button>
+        <button>I WANT TO SELL</button>
+      </div>
+
+      <form>
+        <label>Select Counterparty</label>
+        <select>
+          <option>Luis Maria Ruiz</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" value="1">
+
+        <label>Asset</label>
+        <select>
+          <option>BTC</option>
+        </select>
+
+        <label>Amount</label>
+        <input type="text" value="29,000.00">
+
+        <label>Asset</label>
+        <select>
+          <option>USDC</option>
+        </select>
+
+        <label>This order expires in</label>
+        <input type="date" value="2022-06-10">
+
+        <button type="submit" class="generate">GENERATE ORDER</button>
+      </form>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/buy.js"></script>
+</body>
+</html>

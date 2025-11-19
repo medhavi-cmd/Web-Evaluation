@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('financials.json')
+  fetch('/financials.json')
     .then(function (response) {
       if (!response.ok) throw new Error('Failed to load financial data');
       return response.json();

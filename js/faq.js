@@ -29,7 +29,7 @@ class FAQItem {
   let faqObjects = [];
 
   async function loadFAQs() {
-    const res = await fetch("faq-data.json");
+    const res = await fetch("/faq-data.json");
     const data = await res.json();
     faqObjects = data.faqs.map(f => new FAQItem(f.id, f.question, f.answer));
 

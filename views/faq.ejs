@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ - Cryptin</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="Faq-body">
+  <%- include('partials/header') %>
+
+  <div class="faq-section">
+      <h1 class="faq-title">FAQ's</h1>
+      <h2 class="faq-subtitle">Still Have Questions?</h2>
+      
+      <div class="faq-container" id="faqContainer">
+          <!-- FAQ items will be loaded here dynamically from JSON -->
+      </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/faq.js"></script>
+</body>
+</html>

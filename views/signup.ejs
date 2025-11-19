@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup - Cryptin</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="auth-body">
+  <%- include('partials/header') %>
+
+  <div class="auth-container">
+      <div class="auth-form">
+          <h2>Get Started Now</h2>
+          <form>
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Enter your name" required>
+
+              <label for="email">Email address</label>
+              <input type="email" id="email" placeholder="Enter your email" required>
+
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter your password" required>
+
+              <div class="checkbox">
+                  <input type="checkbox" id="terms">
+                  <label for="terms">I agree to the terms & policies</label>
+              </div>
+
+              <button type="submit" class="btn primary">Signup</button>
+          </form>
+
+          <div class="divider">
+              <hr><span>or</span>
+              <hr>
+          </div>
+
+          <div class="social-login">
+              <button class="google">Sign in with Google</button>
+              <button class="apple">Sign in with Apple</button>
+          </div>
+
+          <p class="login-text">
+              Have an account? <a href="/login">Login</a>
+          </p>
+      </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/signup.js"></script>
+</body>
+</html>

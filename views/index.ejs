@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Cryptin</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body { background-image: url(/img/background.jpg); background-size: 100px 100px; }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="main-content">
+      <div class="hero-text">
+          <h1 class="hero-title">
+            <br>
+              The future of<br>
+              <span class="crypto-highlight">CRYPTOCURRENCY</span> is here
+          </h1>
+          <p class="hero-subtitle">
+              Leverage on any tokens with a protocol trusted with billions for its performance and reliability.
+          </p>
+          <a href="/about" class="sign-in-btn">About Us</a>
+          <a href="/dashboard" class="sign-in-btn">Go to Dashboard</a>
+      </div>
+
+      <div class="stats-section">
+          <div class="stat-card yellow">
+              <div class="stat-number">$2.4B+</div>
+              <div class="stat-label">Trading Volume</div>
+          </div>
+          <div class="stat-card purple">
+              <div class="stat-number">500K+</div>
+              <div class="stat-label">Active Users</div>
+          </div>
+          <div class="stat-card red">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Supported Coins</div>
+          </div>
+      </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>
